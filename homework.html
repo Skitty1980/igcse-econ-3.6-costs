@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firms' Costs — Homework Question Paper (IGCSE Economics 3.6)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap');
+
+  :root {
+    --navy: #1a2744;
+    --teal: #0d9488;
+    --cream: #faf8f4;
+    --gold: #d4a843;
+    --purple: #4c1d95;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.55;
+  }
+
+  .page {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 36px 32px 80px;
+  }
+
+  /* HEADER */
+  .hw-header {
+    background: linear-gradient(135deg, var(--navy), #2d3f5e);
+    color: white;
+    border-radius: 14px;
+    padding: 28px 34px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 18px rgba(26,39,68,0.15);
+  }
+
+  .hw-header .syl-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .hw-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .hw-header .sub {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+  }
+
+  .hw-header .meta {
+    display: flex;
+    gap: 22px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .hw-header .meta-item strong {
+    color: var(--gold);
+    font-weight: 700;
+    margin-right: 5px;
+  }
+
+  /* FORMULA REFERENCE */
+  .formula-box {
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 24px;
+    margin-bottom: 24px;
+  }
+
+  .formula-box .fb-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+
+  .formula-box .fgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 26px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.02rem;
+    color: var(--navy);
+  }
+
+  .formula-box .fgrid .fline {
+    padding: 4px 0;
+  }
+
+  .formula-box .fgrid .fname {
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  /* INSTRUCTIONS */
+  .instructions {
+    background: white;
+    border: 1.5px solid rgba(26,39,68,0.12);
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin-bottom: 26px;
+    font-size: 0.92rem;
+  }
+
+  .instructions .i-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .instructions p + p { margin-top: 4px; }
+
+  /* QUESTION CARD */
+  .qcard {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 10px rgba(26,39,68,0.06);
+    overflow: hidden;
+    border: 1px solid rgba(26,39,68,0.08);
+    break-inside: avoid;
+  }
+
+  .qcard-header {
+    background: var(--purple);
+    color: white;
+    padding: 13px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .qcard-header .qtitle {
+    font-size: 1.02rem;
+    font-weight: 600;
+  }
+
+  .qcard-header .qmarks {
+    background: rgba(255,255,255,0.18);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .qcard-body {
+    padding: 20px 26px 22px;
+  }
+
+  .qcard-body p {
+    font-size: 0.98rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .qpart {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.98rem;
+  }
+
+  .qpart .qletter {
+    font-weight: 700;
+    color: var(--purple);
+    min-width: 22px;
+  }
+
+  .qpart .qbody {
+    flex: 1;
+  }
+
+  .qpart .qmarks-inline {
+    font-size: 0.78rem;
+    color: var(--purple);
+    font-weight: 700;
+    background: #f3e8ff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
+  /* DATA TABLE */
+  .qdata-table {
+    border-collapse: collapse;
+    margin: 12px 0 6px;
+    background: white;
+    font-size: 0.92rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(26,39,68,0.15);
+  }
+
+  .qdata-table th {
+    background: #86efac;
+    color: #064e3b;
+    padding: 9px 16px;
+    text-align: center;
+    font-weight: 700;
+    border: 1px solid rgba(6,78,59,0.2);
+  }
+
+  .qdata-table td {
+    padding: 8px 16px;
+    text-align: center;
+    border: 1px solid rgba(26,39,68,0.12);
+    color: var(--navy);
+  }
+
+  /* Q6 display table — show all given data */
+  .cost-display-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 12px;
+    background: white;
+    font-size: 0.92rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .cost-display-table th {
+    background: #86efac;
+    color: #064e3b;
+    padding: 9px 8px;
+    text-align: center;
+    font-weight: 700;
+    border: 1px solid rgba(6,78,59,0.2);
+  }
+
+  .cost-display-table td {
+    padding: 9px 8px;
+    text-align: center;
+    border: 1px solid rgba(26,39,68,0.15);
+    color: var(--navy);
+  }
+
+  .cost-display-table td.given-val {
+    background: #f1f5f9;
+    font-weight: 500;
+  }
+
+  .cost-display-table td.dash {
+    background: #f8fafc;
+    color: #94a3b8;
+  }
+
+  /* FOOTER */
+  .hw-footer {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 22px 28px;
+    margin-top: 28px;
+    text-align: center;
+  }
+
+  .hw-footer .big-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .hw-footer p {
+    font-size: 0.98rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+  }
+
+  .hw-footer .total-marks {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { max-width: 100%; padding: 20px; }
+    .qcard, .formula-box, .instructions, .hw-header { box-shadow: none; }
+    .qcard { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="hw-header">
+    <span class="syl-tag">Syllabus 3.6 — IGCSE Economics</span>
+    <h1>Firms' Costs — Homework</h1>
+    <div class="sub">Grade 9 — VinSchool Grand Park</div>
+    <div class="meta">
+      <div class="meta-item"><strong>Topic:</strong>Fixed, variable, total &amp; average costs</div>
+      <div class="meta-item"><strong>Questions:</strong>6</div>
+      <div class="meta-item"><strong>Total marks:</strong>22</div>
+    </div>
+  </div>
+
+  <!-- FORMULA REFERENCE -->
+  <div class="formula-box">
+    <div class="fb-label">Formula Reference Sheet</div>
+    <div class="fgrid">
+      <div class="fline"><span class="fname">TC</span> = TFC + TVC</div>
+      <div class="fline"><span class="fname">ATC</span> = TC ÷ Q &nbsp;&nbsp;(or AFC + AVC)</div>
+      <div class="fline"><span class="fname">TFC</span> = TC − TVC</div>
+      <div class="fline"><span class="fname">AFC</span> = TFC ÷ Q</div>
+      <div class="fline"><span class="fname">TVC</span> = TC − TFC &nbsp;(or AVC × Q)</div>
+      <div class="fline"><span class="fname">AVC</span> = TVC ÷ Q</div>
+      <div class="fline"><span class="fname">Total Revenue (TR)</span> = Price × Q</div>
+      <div class="fline"><span class="fname">Profit</span> = TR − TC</div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="instructions">
+    <div class="i-label">Instructions</div>
+    <p>Answer <strong>all six questions</strong> in your own document and submit it to your teacher.</p>
+    <p><strong>Show your working</strong> on calculation questions — marks are awarded for working as well as the final answer.</p>
+    <p>Express monetary answers to <strong>2 decimal places</strong> where appropriate.</p>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 1 -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (1)</div>
+      <div class="qmarks">[4 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <div class="qpart">
+        <div class="qletter">(a)</div>
+        <div class="qbody">Explain the difference between <strong>fixed costs</strong> and <strong>variable costs</strong>. <span class="qmarks-inline">[2]</span></div>
+      </div>
+      <div class="qpart">
+        <div class="qletter">(b)</div>
+        <div class="qbody">Explain the difference between <strong>total costs</strong> and <strong>unit costs</strong>. <span class="qmarks-inline">[2]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 2 -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (2)</div>
+      <div class="qmarks">[2 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <p>A manufacturer has total costs of production that increase from <strong>$5,000 to $6,000</strong> following an increase in its output from <strong>200 units to 300 units</strong>, with fixed costs at <strong>$2,000</strong>.</p>
+      <p>Using the information above, calculate the <strong>change in the manufacturer's average costs of production</strong>. <span class="qmarks-inline">[2]</span></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 3 -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (3)</div>
+      <div class="qmarks">[4 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <p>A firm produces miniature speakers with the following monthly cost structures:</p>
+
+      <table class="qdata-table">
+        <thead>
+          <tr><th>Total output (speakers)</th><th>Total costs ($)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>100</td><td>$5,000</td></tr>
+          <tr><td>200</td><td>$8,000</td></tr>
+          <tr><td>300</td><td>$11,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="qpart">
+        <div class="qletter">(a)</div>
+        <div class="qbody">Assuming constant unit variable costs, calculate the value of the <strong>monthly fixed costs</strong> for the firm. <span class="qmarks-inline">[2]</span></div>
+      </div>
+      <div class="qpart">
+        <div class="qletter">(b)</div>
+        <div class="qbody">Calculate the <strong>change in unit costs</strong> of production if the firm changes from producing 100 units per month to 300 units per month. <span class="qmarks-inline">[2]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 4 -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (4)</div>
+      <div class="qmarks">[2 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <p>A hair salon business has <strong>annual fixed costs of $1.2 million</strong>. The company has an annual output of <strong>150,000 customers</strong>, with a <strong>variable cost per customer of $15</strong>.</p>
+      <p>Calculate the <strong>total annual costs</strong> for the hair salon. <span class="qmarks-inline">[2]</span></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 5 -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (5)</div>
+      <div class="qmarks">[4 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <p>The following data refers to the costs and revenues for a toy manufacturer when operating at <strong>2,000 units of output per month</strong>.</p>
+
+      <table class="qdata-table">
+        <thead>
+          <tr><th>Item</th><th>Costs and revenues ($)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Price</td><td>$15</td></tr>
+          <tr><td>Raw materials per unit</td><td>$5</td></tr>
+          <tr><td>Overheads</td><td>$500</td></tr>
+          <tr><td>Rent</td><td>$2,000</td></tr>
+          <tr><td>Salaries</td><td>$3,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="qpart">
+        <div class="qletter">(a)</div>
+        <div class="qbody">Calculate the <strong>total cost</strong> of producing 2,000 units of toys. <span class="qmarks-inline">[2]</span></div>
+      </div>
+      <div class="qpart">
+        <div class="qletter">(b)</div>
+        <div class="qbody">Calculate the <strong>profit</strong> made by the toy producer if it manages to sell all of its output. <span class="qmarks-inline">[2]</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ -->
+  <!-- QUESTION 6 — cost table to complete -->
+  <!-- ═══════════════════════════ -->
+  <div class="qcard">
+    <div class="qcard-header">
+      <div class="qtitle">Paper 2 Exam Practice Question (6)</div>
+      <div class="qmarks">[6 marks]</div>
+    </div>
+    <div class="qcard-body">
+      <p>Complete the missing figures in the following table (all cost values are expressed in $). Express your answers to <strong>2 decimal places</strong> where appropriate. Reproduce the table in your own document and fill in the missing values. <span class="qmarks-inline">[6]</span></p>
+
+      <table class="cost-display-table">
+        <thead>
+          <tr>
+            <th>Total output</th>
+            <th>TFC</th>
+            <th>TVC</th>
+            <th>TC</th>
+            <th>AFC</th>
+            <th>AVC</th>
+            <th>ATC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="given-val">0</td><td class="given-val">150</td><td class="given-val">0</td><td></td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td></tr>
+          <tr><td class="given-val">5</td><td></td><td class="given-val">100</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">10</td><td></td><td class="given-val">200</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">15</td><td></td><td class="given-val">300</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">20</td><td></td><td class="given-val">400</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">25</td><td></td><td class="given-val">500</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">30</td><td></td><td class="given-val">600</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">35</td><td></td><td class="given-val">700</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="given-val">40</td><td></td><td class="given-val">800</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="hw-footer">
+    <div class="big-label">End of Homework</div>
+    <p>Complete all six questions in your own document and submit it to your teacher.</p>
+    <div class="total-marks">Total: 22 marks</div>
+  </div>
+
+</div>
+
+</body>
+</html>

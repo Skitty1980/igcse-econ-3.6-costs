@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firms' Costs — IGCSE Economics 3.6</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Source+Serif+4:wght@400;600;700&display=swap');
+
+  :root {
+    --navy: #1a2744;
+    --teal: #0d9488;
+    --cream: #faf8f4;
+    --gold: #d4a843;
+    --light-teal: #e0f5f3;
+    --light-navy: #2d3f5e;
+    --gold-light: #fef3c7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'DM Sans', sans-serif;
+    background: #111;
+  }
+
+  /* ── SLIDE CONTAINER ── */
+  .slideshow {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: var(--cream);
+    position: absolute;
+    top: 0; left: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px 72px 60px;
+  }
+
+  .slide.active {
+    display: flex;
+  }
+
+  /* ── NAVIGATION BAR ── */
+  .nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 100;
+  }
+
+  .nav-btn {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .nav-btn:hover { background: rgba(255,255,255,0.22); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .slide-counter {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .slide-title-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.78rem;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  /* ── COMMON SLIDE ELEMENTS ── */
+  .syllabus-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+  }
+
+  h1.slide-h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  h2.slide-h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(2rem, 3.8vw, 2.8rem);
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 22px;
+  }
+
+  .subtitle {
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .obj-list {
+    list-style: none;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .obj-list li {
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    color: var(--navy);
+    padding: 10px 0 10px 32px;
+    border-bottom: 1px solid rgba(26,39,68,0.1);
+    position: relative;
+  }
+
+  .obj-list li:last-child { border-bottom: none; }
+
+  .obj-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  /* ── TWO-COLUMN LAYOUT ── */
+  .slide-body {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    gap: 52px;
+    align-items: flex-start;
+  }
+
+  .slide-body.centered {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+  /* ── DEFINITION BOX ── */
+  .def-box {
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 12px;
+    padding: 22px 28px;
+    margin-bottom: 22px;
+  }
+
+  .def-box .def-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+
+  .def-box p {
+    font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+    color: var(--navy);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* ── EXAMPLES CHIPS ── */
+  .examples-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .chip {
+    background: var(--light-teal);
+    color: var(--navy);
+    border: 1px solid rgba(13,148,136,0.25);
+    border-radius: 20px;
+    font-size: 1rem;
+    padding: 6px 16px;
+    font-weight: 500;
+  }
+
+  .chip.gold-chip {
+    background: var(--gold-light);
+    border-color: rgba(212,168,67,0.35);
+  }
+
+  /* ── WARNING / MISTAKE BOX ── */
+  .mistake-box {
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+  }
+
+  .mistake-box .mistake-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #92400e;
+    margin-bottom: 10px;
+  }
+
+  .mistake-box p {
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: #78350f;
+    line-height: 1.6;
+  }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 10px;
+    padding: 18px 28px;
+    margin: 18px 0;
+    text-align: center;
+  }
+
+  .formula-box .formula-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .formula-box .formula-sub {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 5px;
+  }
+
+  /* ── BULLET POINTS (large) ── */
+  .bullet-list {
+    list-style: none;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .bullet-list li {
+    font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+    color: var(--navy);
+    padding: 11px 0 11px 36px;
+    border-bottom: 1px solid rgba(26,39,68,0.08);
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .bullet-list li:last-child { border-bottom: none; }
+
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 22px;
+    width: 11px;
+    height: 11px;
+    background: var(--teal);
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+
+  .bullet-list li strong { color: var(--teal); }
+  .bullet-list li em { color: var(--gold); font-style: normal; font-weight: 700; }
+
+  /* ── SVG DIAGRAM WRAPPER ── */
+  .diagram-wrap {
+    background: white;
+    border: 1.5px solid rgba(26,39,68,0.12);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 820px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .diagram-wrap svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .click-hint {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--teal);
+    font-weight: 600;
+    opacity: 0.75;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .click-hint::before { content: '▶'; font-size: 0.75rem; }
+
+  /* ── QUIZ SLIDE 9 ── */
+  .quiz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .quiz-item {
+    background: white;
+    border: 2px solid rgba(26,39,68,0.12);
+    border-radius: 12px;
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+
+  .quiz-item:hover { border-color: var(--teal); }
+
+  .quiz-item .q-text {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .quiz-item .q-answer {
+    display: none;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .quiz-item.revealed-fixed .q-answer {
+    display: block;
+    background: var(--light-teal);
+    color: #065f46;
+  }
+
+  .quiz-item.revealed-variable .q-answer {
+    display: block;
+    background: var(--gold-light);
+    color: #78350f;
+  }
+
+  .quiz-item.revealed-fixed {
+    border-color: var(--teal);
+    background: #f0fdfb;
+  }
+
+  .quiz-item.revealed-variable {
+    border-color: var(--gold);
+    background: #fffbeb;
+  }
+
+  .quiz-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+
+  .badge-fixed { background: var(--teal); color: white; }
+  .badge-variable { background: var(--gold); color: white; }
+
+  /* ── CALCULATION TABLE ── */
+  .calc-table-wrap {
+    width: 100%;
+    max-width: 1000px;
+    overflow-x: auto;
+  }
+
+  table.calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  }
+
+  .calc-table th {
+    background: var(--navy);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    padding: 12px 14px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .calc-table td {
+    padding: 12px 14px;
+    text-align: center;
+    border-bottom: 1px solid rgba(26,39,68,0.1);
+    background: white;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .calc-table tr:nth-child(even) td { background: #f8fafc; }
+
+  .reveal-cell {
+    background: var(--navy) !important;
+    color: var(--navy);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 700;
+    min-width: 70px;
+    position: relative;
+  }
+
+  .reveal-cell::after {
+    content: '?';
+    color: rgba(255,255,255,0.5);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .reveal-cell.revealed {
+    background: var(--teal) !important;
+    color: white;
+    cursor: default;
+  }
+
+  .reveal-cell.revealed::after { display: none; }
+
+  .table-insight {
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 14px;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: #78350f;
+    display: none;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .table-insight.visible { display: block; }
+
+  /* ── FORMULA REMINDER BOX ── */
+  .formula-reminder {
+    background: var(--cream);
+    border: 2px solid rgba(26,39,68,0.15);
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-top: 16px;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .formula-reminder .fr-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .formula-reminder .fr-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+  }
+
+  .formula-reminder .fr-step {
+    font-size: clamp(0.88rem, 1.4vw, 1rem);
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .formula-reminder .fr-step .fr-formula {
+    font-weight: 700;
+    color: var(--teal);
+  }
+
+  /* ── SUMMARY SLIDE ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .summary-card {
+    background: white;
+    border: 1.5px solid rgba(26,39,68,0.12);
+    border-radius: 12px;
+    padding: 18px 22px;
+  }
+
+  .summary-card .sc-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .summary-card ul {
+    list-style: none;
+    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    color: var(--navy);
+  }
+
+  .summary-card ul li {
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(26,39,68,0.08);
+    line-height: 1.5;
+  }
+
+  .summary-card ul li:last-child { border-bottom: none; }
+
+  .big-idea-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 22px 32px;
+    margin-top: 18px;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .big-idea-box .bi-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .big-idea-box p {
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
+  /* ── RESEARCH ACTIVITY SLIDE ── */
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .research-card {
+    background: white;
+    border: 2px solid rgba(26,39,68,0.12);
+    border-radius: 12px;
+    padding: 20px 22px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+
+  .research-card:hover { border-color: var(--teal); }
+
+  .research-card.expanded {
+    border-color: var(--teal);
+    background: #f0fdfb;
+  }
+
+  .research-card .rc-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .research-card .rc-type {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  .research-card .rc-hints {
+    display: none;
+    font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+    color: #065f46;
+    line-height: 1.6;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(13,148,136,0.2);
+  }
+
+  .research-card.expanded .rc-hints { display: block; }
+
+  .research-task-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 18px 26px;
+    margin-top: 18px;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .research-task-box p {
+    font-size: clamp(1rem, 1.7vw, 1.2rem);
+    line-height: 1.55;
+  }
+
+  /* ── SVG ELEMENTS: hide/show on click ── */
+  .svg-step { transition: opacity 0.4s; }
+  .svg-step.hidden { opacity: 0; pointer-events: none; }
+  .svg-step.visible { opacity: 1; }
+
+  /* ── WORKED EXAMPLES ── */
+  .we-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 1050px;
+    width: 100%;
+  }
+
+  .we-box {
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 20px 26px;
+  }
+
+  .we-box .we-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #b45309;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .we-box .we-label::before {
+    content: '🧮';
+    font-size: 1.1rem;
+  }
+
+  .we-box .we-question {
+    font-size: clamp(1rem, 1.55vw, 1.15rem);
+    color: #78350f;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .we-box table.we-table {
+    background: white;
+    border-collapse: collapse;
+    margin: 10px 0 14px;
+    font-size: clamp(0.9rem, 1.4vw, 1rem);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .we-box table.we-table th {
+    background: var(--teal);
+    color: white;
+    padding: 9px 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .we-box table.we-table td {
+    padding: 8px 14px;
+    text-align: center;
+    color: var(--navy);
+    border-top: 1px solid rgba(26,39,68,0.08);
+    font-weight: 500;
+  }
+
+  .we-reveal-btn {
+    background: white;
+    border: 2px solid var(--gold);
+    color: #92400e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+  }
+
+  .we-reveal-btn:hover { background: #fef3c7; }
+  .we-reveal-btn::before { content: '👁'; font-size: 1rem; }
+  .we-reveal-btn.hidden { display: none; }
+
+  .we-answer {
+    display: none;
+    background: white;
+    border-left: 4px solid var(--teal);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  .we-answer.visible { display: block; }
+  .we-answer .we-ans-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+
+  .we-answer .we-step {
+    padding: 3px 0;
+  }
+
+  .we-answer .we-step strong { color: var(--teal); }
+
+  /* ── COST REFERENCE TABLE ── */
+  .cost-ref-wrap {
+    width: 100%;
+    max-width: 1180px;
+    overflow-x: auto;
+  }
+
+  table.cost-ref {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: clamp(0.75rem, 1.1vw, 0.88rem);
+  }
+
+  .cost-ref th {
+    background: #86efac;
+    color: #064e3b;
+    padding: 9px 12px;
+    font-weight: 700;
+    text-align: left;
+    border: 1px solid rgba(6,78,59,0.15);
+  }
+
+  .cost-ref td {
+    padding: 9px 12px;
+    border: 1px solid rgba(26,39,68,0.1);
+    vertical-align: middle;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .cost-ref td.cr-name {
+    font-weight: 700;
+    background: #f8fafc;
+    width: 13%;
+  }
+
+  .cost-ref td.cr-formula {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    color: var(--teal);
+    width: 15%;
+    text-align: center;
+  }
+
+  .cost-ref td.cr-diagram {
+    width: 22%;
+    text-align: center;
+    padding: 4px;
+  }
+
+  .cost-ref td.cr-diagram svg {
+    width: 150px;
+    height: auto;
+  }
+
+  .cost-ref td.cr-behaviour {
+    width: 50%;
+    font-size: 0.92em;
+  }
+
+  /* ── ECONOMIES OF SCALE MISTAKE SLIDE ── */
+  .eos-mistake-box {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    border-radius: 14px;
+    padding: 26px 32px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .eos-mistake-box .eos-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #991b1b;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eos-mistake-box .eos-label::before {
+    content: '⚠';
+    font-size: 1.4rem;
+  }
+
+  .eos-mistake-box .eos-wrong {
+    background: white;
+    border-left: 4px solid #ef4444;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: #7f1d1d;
+    font-style: italic;
+  }
+
+  .eos-mistake-box p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #7f1d1d;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .eos-mistake-box p:last-child { margin-bottom: 0; }
+  .eos-mistake-box strong { color: #991b1b; }
+
+  .eos-correct-box {
+    background: var(--light-teal);
+    border: 2px solid var(--teal);
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-top: 18px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .eos-correct-box .eos-correct-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #065f46;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eos-correct-box .eos-correct-label::before {
+    content: '✓';
+    background: var(--teal);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .eos-correct-box p {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #064e3b;
+    line-height: 1.6;
+  }
+
+  /* ── PRINT MODE ── */
+  @media print {
+    html, body {
+      overflow: visible;
+      height: auto;
+      background: white;
+    }
+
+    .slideshow {
+      height: auto;
+      overflow: visible;
+      background: white;
+    }
+
+    .slide {
+      display: flex !important;
+      position: relative;
+      height: auto;
+      min-height: 100vh;
+      page-break-after: always;
+      padding: 40px 60px;
+    }
+
+    .nav-bar { display: none !important; }
+
+    .svg-step { opacity: 1 !important; }
+
+    .quiz-item .q-answer { display: block !important; }
+
+    .reveal-cell::after { display: none !important; }
+    .reveal-cell { background: var(--teal) !important; color: white !important; }
+    .reveal-cell.revealed { background: var(--teal) !important; }
+
+    .table-insight { display: block !important; }
+
+    .research-card .rc-hints { display: block !important; }
+
+    .click-hint { display: none; }
+
+    .we-answer { display: block !important; }
+    .we-reveal-btn { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slideshow" id="slideshow">
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 1 — TITLE
+  ══════════════════════════════════════════ -->
+  <div class="slide active" id="slide-1">
+    <span class="syllabus-tag">Syllabus 3.6 — IGCSE Economics</span>
+    <h1 class="slide-h1">Firms' Costs</h1>
+    <p class="subtitle">Grade 9 — VinSchool Grand Park</p>
+
+    <div style="background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:14px;padding:28px 40px;max-width:800px;width:100%;margin-top:10px;">
+      <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);margin-bottom:16px;">By the end of this lesson you will be able to:</div>
+      <ul class="obj-list">
+        <li>Define and distinguish Fixed Costs, Variable Costs, and Total Costs</li>
+        <li>Calculate TC, ATC, AFC, and AVC from data</li>
+        <li>Explain why ATC falls as output rises (spreading fixed costs)</li>
+        <li>Interpret a cost table for a real business</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 2 — WHAT ARE COSTS?
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-body centered">
+      <h2 class="slide-h2">What are Costs?</h2>
+
+      <ul class="bullet-list" style="max-width:900px;">
+        <li>Every firm must spend money to produce goods or services — these are its <strong>costs of production</strong></li>
+        <li>There are <em>two main types</em> of costs: <strong>Fixed Costs</strong> and <strong>Variable Costs</strong></li>
+        <li>Together they form <strong>Total Costs</strong> — everything the firm spends</li>
+      </ul>
+
+      <div style="display:flex;gap:22px;margin-top:32px;width:100%;max-width:900px;">
+        <div style="flex:1;background:var(--light-teal);border:2px solid var(--teal);border-radius:12px;padding:22px 24px;text-align:center;">
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;color:var(--navy);margin-bottom:8px;">Fixed Costs (FC)</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:#0f766e;">Do NOT change with output</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:2rem;color:var(--navy);font-weight:300;">+</div>
+        <div style="flex:1;background:var(--gold-light);border:2px solid var(--gold);border-radius:12px;padding:22px 24px;text-align:center;">
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;color:var(--navy);margin-bottom:8px;">Variable Costs (VC)</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:#92400e;">Change WITH output</div>
+        </div>
+        <div style="display:flex;align-items:center;font-size:2rem;color:var(--navy);font-weight:300;">=</div>
+        <div style="flex:1;background:var(--navy);border:1.5px solid var(--navy);border-radius:12px;padding:22px 24px;text-align:center;">
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(1.2rem,2.2vw,1.5rem);font-weight:700;color:white;margin-bottom:8px;">Total Costs (TC)</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:rgba(255,255,255,0.65);">TFC + TVC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 3 — FIXED COSTS (concept)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-body">
+      <div class="col">
+        <h2 class="slide-h2">Fixed Costs (FC)</h2>
+
+        <div class="def-box">
+          <div class="def-label">Definition</div>
+          <p>Costs that do <strong>NOT</strong> change with the level of output</p>
+        </div>
+
+        <ul class="bullet-list">
+          <li>Must be paid <strong>even if the firm produces nothing</strong></li>
+          <li>They exist whether output is 0 or 10,000 units</li>
+        </ul>
+
+        <div style="margin-top:20px;">
+          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);margin-bottom:10px;">Examples:</div>
+          <div class="examples-row">
+            <span class="chip">Rent</span>
+            <span class="chip">Insurance</span>
+            <span class="chip">Manager salaries</span>
+            <span class="chip">Machinery leasing</span>
+            <span class="chip">Business rates</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="mistake-box">
+          <div class="mistake-label">Common Mistake</div>
+          <p>Fixed costs are <strong>NOT</strong> costs that never change. Rent CAN increase — but it doesn't increase <em>because you produced more.</em></p>
+          <p style="margin-top:12px;">Fixed costs don't change with <strong>OUTPUT</strong> — that's the key idea.</p>
+        </div>
+
+        <div style="background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:20px 24px;margin-top:22px;">
+          <div style="font-size:0.82rem;color:#64748b;margin-bottom:10px;">Think of it this way:</div>
+          <p style="font-size:clamp(1rem,1.7vw,1.2rem);color:var(--navy);line-height:1.65;">A Vietnamese restaurant pays <strong>$3,000/month rent</strong>. Whether they serve 10 customers or 500 customers that month — the rent bill is still <strong>$3,000</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 4 — FIXED COSTS DIAGRAM (animated)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-4" data-clicks="0" data-max-clicks="3">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:18px;">Fixed Costs — The Diagram</h2>
+
+    <div class="diagram-wrap" onclick="advanceDiagram('slide-4')">
+      <svg id="svg-fc" viewBox="-20 0 700 420" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- STEP 1: Axes -->
+        <g class="svg-step hidden" id="fc-step1">
+          <!-- y-axis -->
+          <line x1="90" y1="22" x2="90" y2="350" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- x-axis -->
+          <line x1="90" y1="350" x2="630" y2="350" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- arrowheads -->
+          <polygon points="90,15 84,28 96,28" fill="#1a2744"/>
+          <polygon points="637,350 624,344 624,356" fill="#1a2744"/>
+          <!-- axis labels -->
+          <text x="36" y="195" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" transform="rotate(-90,36,195)" text-anchor="middle">Costs ($)</text>
+          <text x="620" y="374" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" text-anchor="middle">Output (units)</text>
+          <!-- y ticks and labels -->
+          <line x1="83" y1="210" x2="90" y2="210" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="83" y1="120" x2="90" y2="120" stroke="#1a2744" stroke-width="1.5"/>
+          <text x="76" y="214" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">$100k</text>
+          <text x="76" y="124" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">$200k</text>
+          <text x="76" y="354" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">0</text>
+          <!-- x ticks and labels -->
+          <line x1="250" y1="350" x2="250" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="420" y1="350" x2="420" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="570" y1="350" x2="570" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <text x="250" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">250</text>
+          <text x="420" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">500</text>
+          <text x="570" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">750</text>
+        </g>
+
+        <!-- STEP 2: TFC horizontal line at $100k (y=210) -->
+        <g class="svg-step hidden" id="fc-step2">
+          <!-- dashed reference line from y-axis -->
+          <line x1="90" y1="210" x2="610" y2="210" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- pill label on the RIGHT -->
+          <rect x="533" y="193" width="130" height="32" rx="16" fill="#0d9488"/>
+          <text x="598" y="214" font-family="DM Sans,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">TFC = $100k</text>
+        </g>
+
+        <!-- STEP 3: annotations -->
+        <g class="svg-step hidden" id="fc-step3">
+          <!-- dot at far left (zero output) -->
+          <circle cx="90" cy="210" r="6" fill="#0d9488" stroke="white" stroke-width="2"/>
+          <!-- annotation: same at 0 units -->
+          <line x1="90" y1="196" x2="140" y2="155" stroke="#d4a843" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="130" y="126" width="170" height="38" rx="8" fill="white" stroke="#d4a843" stroke-width="1.5"/>
+          <text x="215" y="141" font-family="DM Sans,sans-serif" font-size="12" fill="#78350f" text-anchor="middle" font-weight="600">Same cost at 0 units</text>
+          <text x="215" y="157" font-family="DM Sans,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">No output — still pay rent!</text>
+
+          <!-- dot at far right (750 units) -->
+          <circle cx="570" cy="210" r="6" fill="#0d9488" stroke="white" stroke-width="2"/>
+          <!-- annotation: same at 750 units -->
+          <line x1="570" y1="196" x2="520" y2="155" stroke="#d4a843" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="348" y="126" width="182" height="38" rx="8" fill="white" stroke="#d4a843" stroke-width="1.5"/>
+          <text x="439" y="141" font-family="DM Sans,sans-serif" font-size="12" fill="#78350f" text-anchor="middle" font-weight="600">Same cost at 750 units</text>
+          <text x="439" y="157" font-family="DM Sans,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">Producing more — still $100k!</text>
+
+          <!-- bottom insight -->
+          <rect x="150" y="278" width="360" height="38" rx="10" fill="#e0f5f3"/>
+          <text x="330" y="302" font-family="DM Sans,sans-serif" font-size="13" fill="#065f46" text-anchor="middle" font-weight="700">Output changes — TFC stays perfectly flat!</text>
+        </g>
+
+      </svg>
+      <div class="click-hint" id="fc-hint">Click to build the diagram</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 5 — VARIABLE COSTS (concept)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-body">
+      <div class="col">
+        <h2 class="slide-h2">Variable Costs (VC)</h2>
+
+        <div class="def-box">
+          <div class="def-label">Definition</div>
+          <p>Costs that <strong>change directly</strong> with the level of output</p>
+        </div>
+
+        <ul class="bullet-list">
+          <li>The <strong>more you produce</strong>, the higher your variable costs</li>
+          <li>VC = <em>$0</em> when output = 0</li>
+          <li>Key difference from FC: variable costs only exist <strong>when producing</strong></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <div style="margin-bottom:18px;">
+          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:12px;">Examples:</div>
+          <div class="examples-row">
+            <span class="chip gold-chip">Raw materials</span>
+            <span class="chip gold-chip">Production worker wages</span>
+            <span class="chip gold-chip">Electricity for machines</span>
+            <span class="chip gold-chip">Packaging</span>
+            <span class="chip gold-chip">Delivery fuel</span>
+          </div>
+        </div>
+
+        <div style="background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:20px 24px;margin-top:18px;">
+          <div style="font-size:0.82rem;color:#64748b;margin-bottom:10px;">Think of it this way:</div>
+          <p style="font-size:clamp(1rem,1.7vw,1.2rem);color:var(--navy);line-height:1.65;">A banh mi shop uses <strong>flour, meat, and vegetables</strong> in every roll. Make 100 rolls → buy 100 sets of ingredients. Make 0 rolls → buy nothing.</p>
+        </div>
+
+        <div style="background:var(--navy);color:white;border-radius:12px;padding:16px 22px;margin-top:18px;font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.6;">
+          At <strong>zero output</strong>: VC = $0<br>
+          As <strong>output rises</strong>: VC rises with it
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 6 — VARIABLE COSTS DIAGRAM (animated)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-6" data-clicks="0" data-max-clicks="3">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:18px;">Variable Costs — The Diagram</h2>
+
+    <div class="diagram-wrap" onclick="advanceDiagram('slide-6')">
+      <svg id="svg-vc" viewBox="-20 0 700 420" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- STEP 1: Axes -->
+        <g class="svg-step hidden" id="vc-step1">
+          <line x1="90" y1="22" x2="90" y2="350" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="90" y1="350" x2="630" y2="350" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <polygon points="90,15 84,28 96,28" fill="#1a2744"/>
+          <polygon points="637,350 624,344 624,356" fill="#1a2744"/>
+          <text x="36" y="195" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" transform="rotate(-90,36,195)" text-anchor="middle">Costs ($)</text>
+          <text x="620" y="374" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" text-anchor="middle">Output (units)</text>
+          <line x1="250" y1="350" x2="250" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="420" y1="350" x2="420" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="570" y1="350" x2="570" y2="358" stroke="#1a2744" stroke-width="1.5"/>
+          <text x="250" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">250</text>
+          <text x="420" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">500</text>
+          <text x="570" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">750</text>
+          <text x="76" y="354" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">0</text>
+        </g>
+
+        <!-- STEP 2: TVC smooth bezier upward curve from origin -->
+        <g class="svg-step hidden" id="vc-step2">
+          <!-- Smooth bezier from origin (90,350) curving upward -->
+          <path d="M 90 350 C 200 330, 360 270, 590 80" stroke="#d4a843" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- pill label on the RIGHT -->
+          <rect x="516" y="58" width="80" height="32" rx="16" fill="#d4a843"/>
+          <text x="556" y="79" font-family="DM Sans,sans-serif" font-size="14" font-weight="700" fill="white" text-anchor="middle">TVC</text>
+        </g>
+
+        <!-- STEP 3: Annotations -->
+        <g class="svg-step hidden" id="vc-step3">
+          <!-- dot at origin -->
+          <circle cx="90" cy="350" r="7" fill="#d4a843" stroke="white" stroke-width="2"/>
+          <!-- annotation at origin -->
+          <line x1="90" y1="336" x2="150" y2="290" stroke="#1a2744" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="140" y="260" width="200" height="40" rx="8" fill="white" stroke="#d4a843" stroke-width="1.5"/>
+          <text x="240" y="276" font-family="DM Sans,sans-serif" font-size="12" fill="#78350f" text-anchor="middle" font-weight="600">Starts at $0 (at the origin)</text>
+          <text x="240" y="293" font-family="DM Sans,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">No output = no variable costs</text>
+
+          <!-- annotation rising -->
+          <rect x="300" y="140" width="210" height="40" rx="8" fill="white" stroke="#d4a843" stroke-width="1.5"/>
+          <text x="405" y="156" font-family="DM Sans,sans-serif" font-size="12" fill="#78350f" text-anchor="middle" font-weight="600">Rises as output increases</text>
+          <text x="405" y="172" font-family="DM Sans,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">More production = higher VC</text>
+        </g>
+
+      </svg>
+      <div class="click-hint" id="vc-hint">Click to build the diagram</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 7 — TOTAL COSTS (concept)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-7">
+    <div class="slide-body centered">
+      <h2 class="slide-h2" style="text-align:center;">Total Costs (TC)</h2>
+
+      <div class="formula-box" style="max-width:560px;width:100%;">
+        <div class="formula-text">TC = TFC + TVC</div>
+        <div class="formula-sub">Total Costs = Total Fixed Costs + Total Variable Costs</div>
+      </div>
+
+      <ul class="bullet-list" style="max-width:900px;margin-top:10px;">
+        <li>Total cost is <strong>everything</strong> the firm spends to produce its output</li>
+        <li>At <strong>zero output</strong>: TC = FC (because VC = $0 when nothing is produced)</li>
+        <li>As <strong>output rises</strong>: TC rises because VC rises — FC stays the same</li>
+        <li>TC curve is <em>parallel</em> to TVC — shifted upward by the amount of TFC</li>
+      </ul>
+
+      <div style="display:flex;gap:18px;margin-top:28px;max-width:900px;width:100%;">
+        <div style="flex:1;background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:16px 20px;text-align:center;">
+          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--teal);margin-bottom:8px;">When Q = 0</div>
+          <div style="font-size:clamp(1.1rem,1.9vw,1.3rem);font-weight:700;color:var(--navy);">TC = TFC + $0 = TFC</div>
+        </div>
+        <div style="flex:1;background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:16px 20px;text-align:center;">
+          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:8px;">As Q rises</div>
+          <div style="font-size:clamp(1.1rem,1.9vw,1.3rem);font-weight:700;color:var(--navy);">TC rises (TVC rises)</div>
+        </div>
+        <div style="flex:1;background:var(--navy);border:1.5px solid var(--navy);border-radius:12px;padding:16px 20px;text-align:center;">
+          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:8px;">TC curve starts at</div>
+          <div style="font-size:clamp(1.1rem,1.9vw,1.3rem);font-weight:700;color:white;">TFC intercept</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 8 — TOTAL COSTS DIAGRAM (animated)
+       Clean, large, pill labels on RIGHT, gap bracket
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-8" data-clicks="0" data-max-clicks="5">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:14px;">Total Costs — All Three Lines</h2>
+
+    <div class="diagram-wrap" onclick="advanceDiagram('slide-8')" style="max-width:900px;">
+      <!-- viewBox gives us 740 x 430 of internal space -->
+      <svg id="svg-tc" viewBox="-20 0 760 430" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- STEP 1: Axes only -->
+        <g class="svg-step hidden" id="tc-step1">
+          <!-- y-axis -->
+          <line x1="100" y1="25" x2="100" y2="370" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- x-axis -->
+          <line x1="100" y1="370" x2="660" y2="370" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- arrowheads -->
+          <polygon points="100,18 94,31 106,31" fill="#1a2744"/>
+          <polygon points="667,370 654,364 654,376" fill="#1a2744"/>
+          <!-- axis labels -->
+          <text x="40" y="205" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" transform="rotate(-90,40,205)" text-anchor="middle">Costs ($)</text>
+          <text x="648" y="396" font-family="DM Sans,sans-serif" font-size="15" fill="#1a2744" text-anchor="middle">Output (Q)</text>
+          <!-- TFC reference mark on y axis -->
+          <line x1="93" y1="235" x2="100" y2="235" stroke="#1a2744" stroke-width="1.5"/>
+          <text x="87" y="239" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">TFC</text>
+          <text x="87" y="374" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="end">0</text>
+          <!-- x ticks -->
+          <line x1="280" y1="370" x2="280" y2="378" stroke="#1a2744" stroke-width="1.5"/>
+          <line x1="460" y1="370" x2="460" y2="378" stroke="#1a2744" stroke-width="1.5"/>
+          <text x="280" y="394" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Q1</text>
+          <text x="460" y="394" font-family="DM Sans,sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Q2</text>
+        </g>
+
+        <!-- STEP 2: TFC horizontal line — teal, labelled RIGHT -->
+        <g class="svg-step hidden" id="tc-step2">
+          <line x1="100" y1="235" x2="635" y2="235" stroke="#0d9488" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- pill badge RIGHT -->
+          <rect x="554" y="216" width="96" height="30" rx="15" fill="#0d9488"/>
+          <text x="602" y="236" font-family="DM Sans,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">TFC</text>
+        </g>
+
+        <!-- STEP 3: TVC smooth bezier from origin — gold, labelled RIGHT -->
+        <g class="svg-step hidden" id="tc-step3">
+          <!-- smooth bezier from (100, 370) curving up -->
+          <path d="M 100 370 C 220 355, 380 305, 610 110" stroke="#d4a843" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- pill badge RIGHT -->
+          <rect x="535" y="90" width="94" height="30" rx="15" fill="#d4a843"/>
+          <text x="582" y="110" font-family="DM Sans,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">TVC</text>
+        </g>
+
+        <!-- STEP 4: TC — navy, starts at TFC intercept, steeper curve, labelled RIGHT -->
+        <g class="svg-step hidden" id="tc-step4">
+          <!-- TC starts at TFC level (y=235) and curves up parallel to TVC shifted 135 up -->
+          <!-- TVC at x=100 is y=370, at x=610 is y=110 (range 260)
+               TC at x=100 is y=235, so shift = 135. At x=610: y = 110 - 135 = -25, clip at ~y=40
+               Bezier for TC: M 100 235 C 220 220, 380 170, 570 40 -->
+          <path d="M 100 235 C 220 220, 380 170, 575 42" stroke="#1a2744" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- pill badge RIGHT -->
+          <rect x="496" y="22" width="134" height="30" rx="15" fill="#1a2744"/>
+          <text x="563" y="42" font-family="DM Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">TC = TFC + TVC</text>
+        </g>
+
+        <!-- STEP 5: "TC starts at TFC" annotation LEFT + gap bracket RIGHT -->
+        <g class="svg-step hidden" id="tc-step5">
+
+          <!-- LEFT: small circle at TFC intercept with annotation -->
+          <circle cx="100" cy="235" r="7" fill="#0d9488" stroke="white" stroke-width="2"/>
+          <line x1="60" y1="235" x2="100" y2="235" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="5" y="218" width="90" height="34" rx="8" fill="white" stroke="#0d9488" stroke-width="1.5"/>
+          <text x="50" y="231" font-family="DM Sans,sans-serif" font-size="10" fill="#065f46" text-anchor="middle" font-weight="700">TC starts</text>
+          <text x="50" y="244" font-family="DM Sans,sans-serif" font-size="10" fill="#065f46" text-anchor="middle">at TFC</text>
+
+          <!-- GAP BRACKET at x=390 (midpoint)
+               TFC is at y=235
+               TVC bezier at x=390: approx y = 370 - (370-110) * (390-100)/(610-100) * curve_factor
+               Using the bezier control points M100,370 C220,355 380,305 610,110
+               rough estimate at t~0.57 gives TVC ~ y=230 ... so TVC is ABOVE TFC here
+               meaning TC at x=390: using M100,235 C220,220 380,170 575,42 → at t~0.57 → y~140
+               Gap = TC - TFC = 235 - 140 = 95px
+               so bracket goes from y=140 (TC line) to y=235 (TFC line) at x=390 -->
+          <line x1="390" y1="142" x2="390" y2="235" stroke="#d4a843" stroke-width="2.5" stroke-dasharray="6,3"/>
+          <!-- bracket caps -->
+          <line x1="382" y1="142" x2="398" y2="142" stroke="#d4a843" stroke-width="2"/>
+          <line x1="382" y1="235" x2="398" y2="235" stroke="#d4a843" stroke-width="2"/>
+          <!-- label for gap -->
+          <rect x="402" y="172" width="162" height="38" rx="8" fill="white" stroke="#d4a843" stroke-width="1.5"/>
+          <text x="483" y="187" font-family="DM Sans,sans-serif" font-size="12" fill="#78350f" text-anchor="middle" font-weight="700">Gap = TVC</text>
+          <text x="483" y="202" font-family="DM Sans,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">TC − TFC = TVC</text>
+
+        </g>
+
+      </svg>
+      <div class="click-hint" id="tc-hint">Click to add each line — 5 steps total</div>
+    </div>
+    <!-- Explanation boxes below diagram -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:900px;margin:12px auto 0;">
+      <div style="background:var(--light-teal);border-radius:10px;padding:14px 18px;border-left:4px solid var(--teal);">
+        <div style="font-weight:700;color:var(--navy);font-size:1.05rem;">Why does TC start at TFC?</div>
+        <div style="font-size:0.95rem;color:var(--navy);margin-top:4px;">When a firm produces <strong>zero output</strong>, it still has to pay its fixed costs (rent, insurance, etc.). Variable costs are $0 because nothing is being made. So TC = TFC + $0 = <strong>TFC</strong>. That's why the TC line begins at the TFC line, not at the origin.</div>
+      </div>
+      <div style="background:var(--gold-light);border-radius:10px;padding:14px 18px;border-left:4px solid var(--gold);">
+        <div style="font-weight:700;color:var(--navy);font-size:1.05rem;">What does the gap between TC and TFC mean?</div>
+        <div style="font-size:0.95rem;color:var(--navy);margin-top:4px;">The vertical distance between the TC line and the TFC line at any output level equals the <strong>total variable cost (TVC)</strong>. Since TC = TFC + TVC, the gap is always TVC. As output rises, TVC rises, so the gap gets <strong>bigger</strong>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 9 — QUICK CHECK: Fixed or Variable?
+       MIXED layout — no predictable left=fixed right=variable
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-9" style="padding-bottom:72px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:8px;">Quick Check: Fixed or Variable?</h2>
+    <p style="text-align:center;color:#64748b;font-size:1.1rem;margin-bottom:22px;">Click each item to reveal the answer</p>
+
+    <div class="quiz-grid">
+
+      <!-- Row 1 -->
+      <div class="quiz-item" onclick="revealQuiz(this,'variable')">
+        <div class="q-text">Flour for a bakery</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-variable">Variable</span><br>
+          More bread produced = more flour needed. Rises directly with output.
+        </div>
+      </div>
+
+      <div class="quiz-item" onclick="revealQuiz(this,'fixed')">
+        <div class="q-text">Manager's salary</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-fixed">Fixed</span><br>
+          The manager is paid the same whether the firm produces 10 or 10,000 units.
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="quiz-item" onclick="revealQuiz(this,'fixed')">
+        <div class="q-text">Insurance on the building</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-fixed">Fixed</span><br>
+          Insurance premium is a fixed annual cost, unrelated to output level.
+        </div>
+      </div>
+
+      <div class="quiz-item" onclick="revealQuiz(this,'variable')">
+        <div class="q-text">Packaging materials</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-variable">Variable</span><br>
+          Each unit needs packaging — more units produced = more packaging cost.
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="quiz-item" onclick="revealQuiz(this,'variable')">
+        <div class="q-text">Delivery driver wages per delivery</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-variable">Variable</span><br>
+          More deliveries = more pay. This wage rises directly with output.
+        </div>
+      </div>
+
+      <div class="quiz-item" onclick="revealQuiz(this,'fixed')">
+        <div class="q-text">Monthly WiFi subscription</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-fixed">Fixed</span><br>
+          A flat monthly fee regardless of how much the firm produces.
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="quiz-item" onclick="revealQuiz(this,'fixed')">
+        <div class="q-text">Rent for a factory</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-fixed">Fixed</span><br>
+          Rent is the same each month regardless of how much is produced.
+        </div>
+      </div>
+
+      <div class="quiz-item" onclick="revealQuiz(this,'variable')">
+        <div class="q-text">Electricity for production machines</div>
+        <div class="q-answer">
+          <span class="quiz-badge badge-variable">Variable</span><br>
+          Machines use more electricity when producing more — rises with output.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 10 — AVERAGE TOTAL COST (ATC)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-10">
+    <div class="slide-body">
+      <div class="col">
+        <h2 class="slide-h2">Average Total Cost (ATC)</h2>
+
+        <div class="formula-box">
+          <div class="formula-text">ATC = TC ÷ Q</div>
+          <div class="formula-sub">Cost per unit of output</div>
+        </div>
+
+        <div class="formula-box" style="background:var(--light-teal);color:var(--navy);margin-top:14px;">
+          <div class="formula-text" style="font-size:clamp(1.1rem,1.9vw,1.4rem);">ATC = AFC + AVC</div>
+          <div class="formula-sub" style="color:#0f766e;">Average Fixed Cost + Average Variable Cost</div>
+        </div>
+
+        <ul class="bullet-list" style="margin-top:18px;">
+          <li>Tells us <strong>how much each unit costs</strong> to make</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:14px;">Why does ATC fall then rise?</div>
+
+        <div style="background:var(--light-teal);border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid var(--teal);">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:6px;font-size:clamp(1rem,1.6vw,1.15rem);">At low output:</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:#065f46;line-height:1.55;">ATC is high — fixed costs are spread over very few units. Each unit carries a big chunk of FC.</div>
+        </div>
+
+        <div style="background:var(--gold-light);border-radius:12px;padding:18px 20px;margin-bottom:14px;border-left:3px solid var(--gold);">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:6px;font-size:clamp(1rem,1.6vw,1.15rem);">As output rises:</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:#78350f;line-height:1.55;">ATC falls — fixed costs are spread over more units. This is <strong>economies of scale</strong>.</div>
+        </div>
+
+        <div style="background:white;border:1.5px solid rgba(26,39,68,0.15);border-radius:12px;padding:18px 20px;border-left:3px solid var(--navy);">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:6px;font-size:clamp(1rem,1.6vw,1.15rem);">At very high output:</div>
+          <div style="font-size:clamp(0.95rem,1.5vw,1.1rem);color:var(--navy);line-height:1.55;">ATC may rise — firm becomes too big, inefficient. Diseconomies of scale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 11 — AVERAGE FIXED COST (AFC)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-11">
+    <div class="slide-body">
+      <div class="col">
+        <h2 class="slide-h2">Average Fixed Cost (AFC)</h2>
+
+        <div class="formula-box">
+          <div class="formula-text">AFC = TFC ÷ Q</div>
+          <div class="formula-sub">Fixed cost per unit of output</div>
+        </div>
+
+        <ul class="bullet-list" style="margin-top:18px;">
+          <li>AFC <em>ALWAYS falls</em> as output increases</li>
+          <li>Same fixed cost is <strong>spread over more units</strong></li>
+          <li>This is the core logic behind <strong>economies of scale</strong> (from 3.4)</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:14px;">Worked Example — TFC = $200</div>
+
+        <table style="width:100%;border-collapse:collapse;background:white;border-radius:12px;overflow:hidden;font-size:clamp(0.9rem,1.5vw,1.1rem);">
+          <thead>
+            <tr>
+              <th style="background:var(--navy);color:white;padding:12px;text-align:center;">Output (Q)</th>
+              <th style="background:var(--navy);color:white;padding:12px;text-align:center;">TFC ($)</th>
+              <th style="background:var(--teal);color:white;padding:12px;text-align:center;">AFC ($) = TFC ÷ Q</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">50</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">200</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);font-weight:700;color:var(--teal);">4.00</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">100</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">200</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);font-weight:700;color:var(--teal);">2.00</td>
+            </tr>
+            <tr>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">200</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);">200</td>
+              <td style="padding:11px;text-align:center;border-bottom:1px solid rgba(26,39,68,0.08);font-weight:700;color:var(--teal);">1.00</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td style="padding:11px;text-align:center;">400</td>
+              <td style="padding:11px;text-align:center;">200</td>
+              <td style="padding:11px;text-align:center;font-weight:700;color:var(--teal);">0.50</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="background:var(--navy);color:white;border-radius:10px;padding:14px 20px;margin-top:16px;font-size:clamp(0.9rem,1.4vw,1.05rem);line-height:1.55;">
+          AFC fell from <strong style="color:var(--gold);">$4.00</strong> to <strong style="color:var(--gold);">$0.50</strong> — the fixed cost is "spread" over 8× more units. This is why <strong>producing more reduces cost per unit.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 12 — CALCULATION CHALLENGE
+       + Formula Reminder box below the table
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-12" style="padding-bottom:72px;justify-content:flex-start;padding-top:28px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:6px;">Calculation Challenge</h2>
+    <p style="text-align:center;color:#64748b;font-size:1rem;margin-bottom:14px;">Banh Mi Shop — Click each <strong style="color:var(--navy);">?</strong> to reveal the answer</p>
+
+    <div class="calc-table-wrap">
+      <table class="calc-table">
+        <thead>
+          <tr>
+            <th>Output<br>(banh mi/day)</th>
+            <th>TFC ($)</th>
+            <th>TVC ($)</th>
+            <th>TC ($)</th>
+            <th>ATC ($)</th>
+            <th>AFC ($)</th>
+            <th>AVC ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row 0 -->
+          <tr>
+            <td>0</td>
+            <td>200</td>
+            <td>0</td>
+            <td class="reveal-cell" onclick="revealCell(this,'200')" title="TC = TFC + TVC = 200 + 0 = 200"><!-- ? --></td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <!-- Row 50 -->
+          <tr>
+            <td>50</td>
+            <td>200</td>
+            <td>150</td>
+            <td class="reveal-cell" onclick="revealCell(this,'350')" title="200 + 150 = 350"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'7.00')" title="350 ÷ 50 = 7.00"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'4.00')" title="200 ÷ 50 = 4.00"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'3.00')" title="150 ÷ 50 = 3.00"><!-- ? --></td>
+          </tr>
+          <!-- Row 100 -->
+          <tr>
+            <td>100</td>
+            <td>200</td>
+            <td>280</td>
+            <td class="reveal-cell" onclick="revealCell(this,'480')" title="200 + 280 = 480"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'4.80')" title="480 ÷ 100 = 4.80"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'2.00')" title="200 ÷ 100 = 2.00"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'2.80')" title="280 ÷ 100 = 2.80"><!-- ? --></td>
+          </tr>
+          <!-- Row 200 -->
+          <tr>
+            <td>200</td>
+            <td>200</td>
+            <td>500</td>
+            <td class="reveal-cell" onclick="revealCell(this,'700')" title="200 + 500 = 700"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'3.50')" title="700 ÷ 200 = 3.50"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'1.00')" title="200 ÷ 200 = 1.00"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'2.50')" title="500 ÷ 200 = 2.50"><!-- ? --></td>
+          </tr>
+          <!-- Row 400 -->
+          <tr>
+            <td>400</td>
+            <td>200</td>
+            <td>1200</td>
+            <td class="reveal-cell" onclick="revealCell(this,'1400')" title="200 + 1200 = 1400"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'3.50')" title="1400 ÷ 400 = 3.50"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'0.50')" title="200 ÷ 400 = 0.50"><!-- ? --></td>
+            <td class="reveal-cell" onclick="revealCell(this,'3.00')" title="1200 ÷ 400 = 3.00"><!-- ? --></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- FORMULA REMINDER BOX -->
+      <div class="formula-reminder">
+        <div class="fr-label">Formula Reminder</div>
+        <div class="fr-steps">
+          <div class="fr-step">Step 1: <span class="fr-formula">TC = TFC + TVC</span></div>
+          <div class="fr-step">Step 2: <span class="fr-formula">ATC = TC ÷ Output</span></div>
+          <div class="fr-step">Step 3: <span class="fr-formula">AFC = TFC ÷ Output</span></div>
+          <div class="fr-step">Step 4: <span class="fr-formula">AVC = TVC ÷ Output</span></div>
+        </div>
+      </div>
+
+      <div class="table-insight" id="table-insight">
+        <strong>Notice the pattern:</strong> AFC fell from $4.00 to $0.50 as fixed costs spread over more units. AVC fell then rose (from $3.00 to $2.50 to $3.00) — variable cost efficiency improves then worsens. ATC fell from $7.00 to $3.50 — the savings from spreading FC offset rising AVC. This is the beginning of the U-shaped ATC curve!
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 13 — AVC (kept, renumbered)
+       Actually the original had no AVC separate slide —
+       keeping slot 13 open / using for AVC concept to bridge to calc
+       Let's use slide 13 for a brief AVC slide
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-13">
+    <div class="slide-body">
+      <div class="col">
+        <h2 class="slide-h2">Average Variable Cost (AVC)</h2>
+
+        <div class="formula-box">
+          <div class="formula-text">AVC = TVC ÷ Q</div>
+          <div class="formula-sub">Variable cost per unit of output</div>
+        </div>
+
+        <ul class="bullet-list" style="margin-top:18px;">
+          <li>AVC measures how much variable cost each unit adds</li>
+          <li>At low output: AVC may be <strong>high</strong> (small-scale production inefficiency)</li>
+          <li>As output grows: AVC may <em>fall</em> (specialisation, efficiency gains)</li>
+          <li>At very high output: AVC may <strong>rise again</strong> (overcrowding, bottlenecks)</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:14px;">Putting it all together:</div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:var(--light-teal);border-radius:12px;padding:16px 20px;border-left:4px solid var(--teal);">
+            <div style="font-size:clamp(1rem,1.6vw,1.15rem);font-weight:700;color:var(--navy);">ATC = AFC + AVC</div>
+            <div style="font-size:clamp(0.9rem,1.4vw,1rem);color:#065f46;margin-top:4px;">Total average cost = fixed cost per unit + variable cost per unit</div>
+          </div>
+          <div style="background:var(--gold-light);border-radius:12px;padding:16px 20px;border-left:4px solid var(--gold);">
+            <div style="font-size:clamp(1rem,1.6vw,1.15rem);font-weight:700;color:var(--navy);">AFC always falls as Q rises</div>
+            <div style="font-size:clamp(0.9rem,1.4vw,1rem);color:#78350f;margin-top:4px;">Because the same TFC is spread over more and more units</div>
+          </div>
+          <div style="background:white;border:1.5px solid rgba(26,39,68,0.15);border-radius:12px;padding:16px 20px;border-left:4px solid var(--navy);">
+            <div style="font-size:clamp(1rem,1.6vw,1.15rem);font-weight:700;color:var(--navy);">⚠️ Exam tip: What happens to averages when output = 0?</div>
+            <div style="font-size:clamp(0.9rem,1.4vw,1rem);color:var(--navy);margin-top:4px;">You cannot calculate ATC, AFC, or AVC when output is zero — dividing by zero is impossible. At zero output, simply state: <strong>TC = TFC</strong> (the only cost is fixed costs).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 14 — WORKED EXAMPLES (click to reveal)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-14" style="padding-bottom:72px;justify-content:flex-start;padding-top:28px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:8px;">Worked Examples</h2>
+    <p style="text-align:center;color:#64748b;font-size:1.05rem;margin-bottom:18px;">Try each problem first — then click the reveal button to check your working</p>
+
+    <div class="we-wrap">
+
+      <!-- Worked Example 1 -->
+      <div class="we-box">
+        <div class="we-label">Worked Example (1)</div>
+        <p class="we-question">A firm produces <strong>four units of output</strong> at an average total cost (ATC) of <strong>$18</strong>. The firm subsequently makes a <strong>fifth unit</strong> which costs the firm <strong>$20</strong>.</p>
+        <p class="we-question"><strong>What is the value of the average total cost of the five units of output?</strong></p>
+
+        <button class="we-reveal-btn" onclick="revealWorked(this,'we-ans-1')">Reveal answer</button>
+        <div class="we-answer" id="we-ans-1">
+          <div class="we-ans-label">Step-by-step solution</div>
+          <div class="we-step"><strong>Step 1:</strong> Find Total Cost of the first 4 units — TC = ATC × Q = $18 × 4 = <strong>$72</strong></div>
+          <div class="we-step"><strong>Step 2:</strong> Add the cost of the 5th unit — $72 + $20 = <strong>$92</strong> (new TC)</div>
+          <div class="we-step"><strong>Step 3:</strong> Calculate new ATC — ATC = TC ÷ Q = $92 ÷ 5 = <strong>$18.40</strong></div>
+          <div class="we-step" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(26,39,68,0.1);">✅ <strong>Answer: ATC = $18.40 per unit</strong></div>
+        </div>
+      </div>
+
+      <!-- Worked Example 2 -->
+      <div class="we-box">
+        <div class="we-label">Worked Example (2)</div>
+        <p class="we-question">Use the data below to <strong>calculate the fixed costs</strong> of production for the firm.</p>
+
+        <table class="we-table">
+          <thead>
+            <tr>
+              <th>Output</th>
+              <th>Total variable cost ($)</th>
+              <th>Total costs ($)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>10</td><td>1,500</td><td>3,845</td></tr>
+            <tr><td>15</td><td>2,250</td><td>4,595</td></tr>
+          </tbody>
+        </table>
+
+        <button class="we-reveal-btn" onclick="revealWorked(this,'we-ans-2')">Reveal answer</button>
+        <div class="we-answer" id="we-ans-2">
+          <div class="we-ans-label">Step-by-step solution</div>
+          <div class="we-step"><strong>Key formula:</strong> TFC = TC − TVC (because TC = TFC + TVC)</div>
+          <div class="we-step"><strong>At Q = 10:</strong> TFC = $3,845 − $1,500 = <strong>$2,345</strong></div>
+          <div class="we-step"><strong>At Q = 15:</strong> TFC = $4,595 − $2,250 = <strong>$2,345</strong> ✓ (check — same as above, as expected)</div>
+          <div class="we-step" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(26,39,68,0.1);">✅ <strong>Answer: Fixed costs = $2,345</strong></div>
+          <div class="we-step" style="font-size:0.9em;color:#64748b;margin-top:6px;">💡 TFC is the same at both output levels — that's how we know our answer is correct. Fixed costs don't change with output!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 15 — COST REFERENCE TABLE (summary of all 6 cost concepts)
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-15" style="padding-bottom:72px;justify-content:flex-start;padding-top:22px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:6px;">Cost Reference Table</h2>
+    <p style="text-align:center;color:#64748b;font-size:1rem;margin-bottom:14px;">All six cost concepts — formulas, diagrams, and how each changes with output</p>
+
+    <div class="cost-ref-wrap">
+      <table class="cost-ref">
+        <thead>
+          <tr>
+            <th>Category of cost</th>
+            <th style="text-align:center;">Formula</th>
+            <th style="text-align:center;">Diagram</th>
+            <th>Changes in output</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- TC row -->
+          <tr>
+            <td class="cr-name">Total cost (TC)</td>
+            <td class="cr-formula">TC = TFC + TVC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <line x1="25" y1="70" x2="165" y2="70" stroke="#94a3b8" stroke-width="1.2"/>
+                <text x="155" y="66" font-size="8" fill="#64748b">TFC</text>
+                <path d="M 25 70 C 70 60, 110 45, 165 30" stroke="#94a3b8" stroke-width="1.3" fill="none"/>
+                <text x="155" y="32" font-size="8" fill="#64748b">TVC</text>
+                <path d="M 25 55 C 70 45, 110 30, 165 12" stroke="#1a2744" stroke-width="1.8" fill="none"/>
+                <text x="158" y="14" font-size="8" fill="#1a2744" font-weight="700">TC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="80" y="118" font-size="7" fill="#64748b">Output (units)</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">Total costs (the sum of total fixed costs and total variable costs) <strong>increase with the level of output</strong>. The greater the level of production, the higher the total costs. Note the TC line starts at the value of TFC as fixed costs still need to be paid even without any production.</td>
+          </tr>
+
+          <!-- ATC row -->
+          <tr>
+            <td class="cr-name">Average total cost (ATC)</td>
+            <td class="cr-formula">ATC = TC ÷ Q<br><span style="font-size:0.85em;color:#64748b;">or</span><br>ATC = AFC + AVC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <path d="M 35 30 Q 85 100, 160 50" stroke="#0d9488" stroke-width="1.8" fill="none"/>
+                <text x="140" y="48" font-size="8" fill="#0d9488" font-weight="700">ATC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="95" y="118" font-size="7" fill="#64748b">Output level</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">The average cost (or average total cost) is the <strong>cost per unit of production</strong>. The ATC <strong>falls</strong> as output rises if the firm experiences <strong>economies of scale</strong>, but will <strong>rise</strong> after a certain level of output once <strong>diseconomies of scale</strong> set in. (U-shape)</td>
+          </tr>
+
+          <!-- TFC row -->
+          <tr>
+            <td class="cr-name">Fixed costs (FC) or total fixed cost (TFC)</td>
+            <td class="cr-formula">TFC = ATC × Q<br><span style="font-size:0.85em;color:#64748b;">or</span><br>TFC = TC − TVC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <line x1="18" y1="55" x2="25" y2="55" stroke="#64748b" stroke-width="1"/>
+                <text x="15" y="58" font-size="7" fill="#64748b" text-anchor="end">$100k</text>
+                <line x1="25" y1="55" x2="160" y2="55" stroke="#0d9488" stroke-width="1.8"/>
+                <text x="145" y="52" font-size="8" fill="#0d9488" font-weight="700">TFC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="80" y="118" font-size="7" fill="#64748b">Output (units)</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">A change in output <strong>has no impact</strong> on fixed costs. In this example, TFC remain at <strong>$100,000</strong> even at higher levels of production (output). The TFC line is perfectly flat (horizontal).</td>
+          </tr>
+
+          <!-- AFC row -->
+          <tr>
+            <td class="cr-name">Average fixed cost (AFC)</td>
+            <td class="cr-formula">AFC = TFC ÷ Q<br><span style="font-size:0.85em;color:#64748b;">or</span><br>AFC = ATC − AVC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <path d="M 32 18 Q 55 75, 165 93" stroke="#d4a843" stroke-width="1.8" fill="none"/>
+                <text x="148" y="90" font-size="8" fill="#d4a843" font-weight="700">AFC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="95" y="118" font-size="7" fill="#64748b">Output level</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">Average fixed costs <strong>continually decline</strong> as the level of output increases. This is because the value of fixed cost (FC) is <strong>divided by an increasingly higher value</strong> (the quantity of output). AFC never reaches zero.</td>
+          </tr>
+
+          <!-- TVC row -->
+          <tr>
+            <td class="cr-name">Variable costs (VC) or total variable cost (TVC)</td>
+            <td class="cr-formula">TVC = AVC × Q<br><span style="font-size:0.85em;color:#64748b;">or</span><br>TVC = TC − TFC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <path d="M 25 105 C 70 95, 110 55, 165 18" stroke="#d4a843" stroke-width="1.8" fill="none"/>
+                <text x="150" y="20" font-size="8" fill="#d4a843" font-weight="700">TVC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="80" y="118" font-size="7" fill="#64748b">Output (units)</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">Variable costs <strong>increase in proportion to the level of output</strong>. The higher the level of production, the higher the value of total variable costs. TVC starts at $0 when Q = 0 (no production → no variable costs).</td>
+          </tr>
+
+          <!-- AVC row -->
+          <tr>
+            <td class="cr-name">Average variable cost (AVC)</td>
+            <td class="cr-formula">AVC = TVC ÷ Q<br><span style="font-size:0.85em;color:#64748b;">or</span><br>AVC = ATC − AFC</td>
+            <td class="cr-diagram">
+              <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+                <line x1="25" y1="10" x2="25" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <line x1="25" y1="105" x2="170" y2="105" stroke="#1a2744" stroke-width="1.2"/>
+                <polygon points="25,6 22,14 28,14" fill="#1a2744"/>
+                <polygon points="174,105 166,102 166,108" fill="#1a2744"/>
+                <path d="M 35 35 Q 85 105, 160 55" stroke="#1a2744" stroke-width="1.8" fill="none"/>
+                <text x="140" y="52" font-size="8" fill="#1a2744" font-weight="700">AVC</text>
+                <text x="3" y="55" font-size="7" fill="#64748b" transform="rotate(-90,3,55)">Costs ($)</text>
+                <text x="95" y="118" font-size="7" fill="#64748b">Output level</text>
+              </svg>
+            </td>
+            <td class="cr-behaviour">The average variable cost is <strong>downward sloping</strong> when the firm is able to experience <strong>economies of scale</strong>, but starts to <strong>rise</strong> if the firm expands output beyond its <strong>optimal (most efficient) level of production</strong>. (U-shape)</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 16 — COMMON MISTAKE: ECONOMIES OF SCALE
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-16">
+    <div class="slide-body centered">
+      <h2 class="slide-h2" style="text-align:center;">Common Mistake — Economies of Scale</h2>
+      <p style="text-align:center;color:#64748b;font-size:1.05rem;margin-bottom:22px;">The #1 mix-up students make in exam questions</p>
+
+      <div class="eos-mistake-box">
+        <div class="eos-label">The wrong definition students often give:</div>
+        <div class="eos-wrong">"Economies of scale are costs of production that fall as a firm increases its production."</div>
+
+        <p>This is <strong>incorrect</strong>. As a firm increases the scale of its production, it will actually cost <strong>MORE</strong> to produce additional output — because the firm needs more raw materials, more component parts, more labour, and more fuel.</p>
+        <p>However, it <em>is</em> possible that the <strong>average cost</strong> of production falls — <strong>NOT</strong> the overall production cost (total cost).</p>
+      </div>
+
+      <div class="eos-correct-box">
+        <div class="eos-correct-label">The correct definition:</div>
+        <p><strong>Economies of scale</strong> occur when the <strong>average cost per unit (ATC)</strong> falls as output increases. Total costs still <strong>rise</strong> with output — but each unit becomes <strong>cheaper to produce</strong> because fixed costs are spread over more units and the firm gains efficiency.</p>
+      </div>
+
+      <div style="background:var(--navy);color:white;border-radius:12px;padding:16px 24px;margin-top:18px;max-width:900px;width:100%;font-size:clamp(0.95rem,1.5vw,1.1rem);text-align:center;line-height:1.55;">
+        <strong style="color:var(--gold);">Exam tip:</strong> Always say <strong>"average cost per unit falls"</strong> — never "costs fall" on its own.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 17 — RESEARCH CHALLENGE
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-17" style="padding-bottom:72px;justify-content:flex-start;padding-top:28px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:6px;">Research Challenge</h2>
+    <p style="text-align:center;color:#64748b;font-size:1.1rem;margin-bottom:20px;">Choose ONE Vietnamese business below — click to reveal thinking hints</p>
+
+    <div class="research-grid">
+
+      <div class="research-card" onclick="toggleResearch(this)">
+        <div class="rc-type">Food &amp; Beverage</div>
+        <div class="rc-title">Highlands Coffee</div>
+        <div style="font-size:0.88rem;color:#64748b;">Click to reveal hints</div>
+        <div class="rc-hints">
+          <strong>Think about:</strong><br>
+          Rent for each store, coffee beans per cup, barista wages (fixed salary vs per shift), cups &amp; packaging per drink, monthly WiFi subscription, espresso machines &amp; equipment.
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch(this)">
+        <div class="rc-type">Technology / Gig Economy</div>
+        <div class="rc-title">Grab Vietnam</div>
+        <div style="font-size:0.88rem;color:#64748b;">Click to reveal hints</div>
+        <div class="rc-hints">
+          <strong>Think about:</strong><br>
+          App development &amp; server costs (fixed), driver payments per ride, marketing campaigns, insurance, customer support staff salaries, fuel subsidies per trip.
+        </div>
+      </div>
+
+      <div class="research-card" onclick="toggleResearch(this)">
+        <div class="rc-type">Manufacturing</div>
+        <div class="rc-title">VinFast</div>
+        <div style="font-size:0.88rem;color:#64748b;">Click to reveal hints</div>
+        <div class="rc-hints">
+          <strong>Think about:</strong><br>
+          Factory building &amp; land (fixed), robots &amp; machinery, steel and batteries per car, assembly worker wages, electricity for production, R&amp;D costs.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="research-task-box">
+      <p>Write down at least <strong>3 fixed costs</strong> and <strong>3 variable costs</strong> for your chosen business.<br>Be ready to share with the class — can anyone find an edge case?</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SLIDE 18 — SUMMARY
+  ══════════════════════════════════════════ -->
+  <div class="slide" id="slide-18" style="padding-bottom:72px;justify-content:flex-start;padding-top:28px;">
+    <h2 class="slide-h2" style="text-align:center;margin-bottom:20px;">Summary — Firms' Costs</h2>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="sc-label">Key Definitions</div>
+        <ul>
+          <li><strong>FC</strong> — Costs that do NOT change with output</li>
+          <li><strong>VC</strong> — Costs that change directly with output</li>
+          <li><strong>TC</strong> — Total of all costs (FC + VC)</li>
+          <li><strong>ATC</strong> — Average cost per unit (TC ÷ Q)</li>
+          <li><strong>AFC</strong> — Fixed cost per unit (TFC ÷ Q)</li>
+          <li><strong>AVC</strong> — Variable cost per unit (TVC ÷ Q)</li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <div class="sc-label">Key Formulas</div>
+        <ul>
+          <li><strong>TC = TFC + TVC</strong></li>
+          <li><strong>ATC = TC ÷ Q</strong></li>
+          <li><strong>ATC = AFC + AVC</strong></li>
+          <li><strong>AFC = TFC ÷ Q</strong></li>
+          <li><strong>AVC = TVC ÷ Q</strong></li>
+          <li>At Q = 0: TC = TFC, VC = $0</li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <div class="sc-label">What happens as output rises?</div>
+        <ul>
+          <li>TFC stays <strong>constant</strong> (horizontal line)</li>
+          <li>TVC <strong>rises</strong> from zero (smooth curve)</li>
+          <li>TC <strong>rises</strong> (parallel to TVC, shifted up by TFC)</li>
+          <li>AFC <strong>always falls</strong> (spreading fixed costs)</li>
+          <li>ATC <strong>falls then may rise</strong> (U-shape)</li>
+        </ul>
+      </div>
+
+      <div class="summary-card">
+        <div class="sc-label">Exam Tips</div>
+        <ul>
+          <li>Fixed costs can change over time — just NOT with output</li>
+          <li>VC = $0 at zero output — always state this</li>
+          <li>TC starts at TFC intercept, not at the origin</li>
+          <li>AFC falls because same FC is shared over more units</li>
+          <li>Link ATC to economies of scale (Topic 3.4)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="big-idea-box">
+      <div class="bi-label">The Big Idea</div>
+      <p>Firms want to find the output level where <strong>Average Total Cost (ATC) is lowest</strong> — this is where they are most efficient and profitable.</p>
+    </div>
+  </div>
+
+</div><!-- end .slideshow -->
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION BAR
+══════════════════════════════════════════ -->
+<nav class="nav-bar" id="nav-bar">
+  <button class="nav-btn" id="btn-prev" onclick="changeSlide(-1)" disabled>&#8592; Prev</button>
+  <div style="text-align:center;">
+    <div class="slide-counter" id="slide-counter">1 / 18</div>
+    <div class="slide-title-label" id="slide-title-label">Title</div>
+  </div>
+  <button class="nav-btn" id="btn-next" onclick="changeSlide(1)">Next &#8594;</button>
+</nav>
+
+<script>
+  // ── SLIDE TITLES ──
+  const slideTitles = [
+    "Title",
+    "What are Costs?",
+    "Fixed Costs",
+    "Fixed Costs Diagram",
+    "Variable Costs",
+    "Variable Costs Diagram",
+    "Total Costs",
+    "Total Costs Diagram",
+    "Quick Check: Fixed or Variable?",
+    "Average Total Cost (ATC)",
+    "Average Fixed Cost (AFC)",
+    "Calculation Challenge",
+    "Average Variable Cost (AVC)",
+    "Worked Examples",
+    "Cost Reference Table",
+    "Common Mistake: Economies of Scale",
+    "Research Challenge",
+    "Summary"
+  ];
+
+  const totalSlides = 18;
+  let currentSlide = 1;
+
+  function showSlide(n) {
+    document.querySelectorAll('.slide').forEach(function(s) {
+      s.classList.remove('active');
+    });
+    var target = document.getElementById('slide-' + n);
+    if (target) target.classList.add('active');
+
+    document.getElementById('slide-counter').textContent = n + ' / ' + totalSlides;
+    document.getElementById('slide-title-label').textContent = slideTitles[n - 1] || '';
+
+    document.getElementById('btn-prev').disabled = (n === 1);
+    document.getElementById('btn-next').disabled = (n === totalSlides);
+  }
+
+  function changeSlide(dir) {
+    var next = currentSlide + dir;
+    if (next < 1 || next > totalSlides) return;
+    currentSlide = next;
+    showSlide(currentSlide);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      changeSlide(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      changeSlide(-1);
+    }
+  });
+
+  // ── ANIMATED DIAGRAMS ──
+  function advanceDiagram(slideId) {
+    var slide = document.getElementById(slideId);
+    var clicks = parseInt(slide.dataset.clicks || '0');
+    var maxClicks = parseInt(slide.dataset.maxClicks || '0');
+
+    if (clicks >= maxClicks) return;
+    clicks++;
+    slide.dataset.clicks = clicks;
+
+    var prefixMap = {
+      'slide-4': 'fc-step',
+      'slide-6': 'vc-step',
+      'slide-8': 'tc-step'
+    };
+
+    var prefix = prefixMap[slideId];
+    if (!prefix) return;
+
+    var stepEl = document.getElementById(prefix + clicks);
+    if (stepEl) {
+      stepEl.classList.remove('hidden');
+      stepEl.classList.add('visible');
+    }
+
+    var hintMap = {
+      'slide-4': 'fc-hint',
+      'slide-6': 'vc-hint',
+      'slide-8': 'tc-hint'
+    };
+    var hint = document.getElementById(hintMap[slideId]);
+    if (hint) {
+      if (clicks >= maxClicks) {
+        hint.textContent = 'Diagram complete';
+        hint.style.opacity = '0.4';
+      } else {
+        hint.textContent = 'Click to continue (' + clicks + '/' + maxClicks + ')';
+      }
+    }
+  }
+
+  // ── QUIZ SLIDE 9 ──
+  function revealQuiz(el, type) {
+    if (el.classList.contains('revealed-fixed') || el.classList.contains('revealed-variable')) return;
+    el.classList.add('revealed-' + type);
+    el.querySelector('.q-answer').style.display = 'block';
+  }
+
+  // ── CALCULATION TABLE SLIDE 12 ──
+  var revealedCount = 0;
+  var totalRevealable = 17;
+
+  function revealCell(el, value) {
+    if (el.classList.contains('revealed')) return;
+    el.classList.add('revealed');
+    el.textContent = value;
+    revealedCount++;
+
+    if (revealedCount >= totalRevealable) {
+      var insight = document.getElementById('table-insight');
+      if (insight) insight.classList.add('visible');
+    }
+  }
+
+  // ── RESEARCH CARDS ──
+  function toggleResearch(el) {
+    el.classList.toggle('expanded');
+  }
+
+  // ── WORKED EXAMPLES (reveal answer) ──
+  function revealWorked(btn, answerId) {
+    var ans = document.getElementById(answerId);
+    if (ans) ans.classList.add('visible');
+    btn.classList.add('hidden');
+  }
+
+  // ── INIT ──
+  showSlide(1);
+</script>
+
+</body>
+</html>
