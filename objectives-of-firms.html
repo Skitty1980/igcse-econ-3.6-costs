@@ -1023,6 +1023,89 @@
     line-height: 1.45;
   }
 
+  /* ── SLIDE IMAGERY ── */
+  .slide-hero-banner {
+    width: 100%;
+    max-width: 800px;
+    height: 140px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 18px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .slide-hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    display: block;
+  }
+
+  .slide-img-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(26,39,68,0.14);
+    flex-shrink: 0;
+  }
+
+  .slide-img-frame img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide-img-thumb {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(26,39,68,0.12);
+    flex-shrink: 0;
+  }
+
+  .slide-img-thumb img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cs-banner {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cs-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    display: block;
+  }
+
+  .cs-logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    background: white;
+    padding: 4px 8px;
+    flex-shrink: 0;
+  }
+
+  .opc-icon {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .osq-icon {
+    display: block;
+    margin-bottom: 10px;
+  }
+
   /* ── PRINT MODE ── */
   @media print {
     html, body {
@@ -1089,6 +1172,10 @@
         <li>Explain <strong>Growth</strong> as an objective and how it is measured</li>
       </ul>
     </div>
+
+    <div class="slide-hero-banner">
+      <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80" alt="Ho Chi Minh City business district skyline" loading="lazy">
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -1105,21 +1192,25 @@
 
       <div class="obj-preview-grid">
         <div class="obj-preview-card opc-navy">
+          <svg class="opc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <div class="opc-label">Objective 1</div>
           <div class="opc-title">Survival</div>
           <div class="opc-teaser">Staying in business when times are tough — the most basic goal of any firm.</div>
         </div>
         <div class="obj-preview-card opc-teal">
+          <svg class="opc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <div class="opc-label">Objective 2</div>
           <div class="opc-title">Social Welfare</div>
           <div class="opc-teaser">Prioritising benefits to society and people beyond just making money.</div>
         </div>
         <div class="obj-preview-card opc-gold">
+          <svg class="opc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           <div class="opc-label">Objective 3</div>
           <div class="opc-title">Profit Maximisation</div>
           <div class="opc-teaser">Operating where TR − TC is at its highest — the classic commercial goal.</div>
         </div>
         <div class="obj-preview-card opc-lteal">
+          <svg class="opc-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           <div class="opc-label">Objective 4</div>
           <div class="opc-title">Growth</div>
           <div class="opc-teaser">Increasing the size of the firm, its markets, and its operations over time.</div>
@@ -1135,30 +1226,38 @@
     <div class="slide-body centered">
       <h2 class="slide-h2" style="text-align:center;">Objective 1 — Survival</h2>
 
-      <div style="width:100%;max-width:1000px;">
-        <div class="def-box">
-          <div class="def-label">Definition</div>
-          <p><strong>SURVIVAL</strong> — actions taken by firms to remain operational or in existence.</p>
-        </div>
+      <div style="width:100%;max-width:1000px;display:flex;gap:28px;align-items:flex-start;">
 
-        <div style="background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:18px 24px;margin-bottom:16px;">
-          <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:12px;">Most relevant when:</div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Starting a new business</div>
-            <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Facing recession</div>
-            <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Fighting tough competition</div>
+        <div style="flex:1;min-width:0;">
+          <div class="def-box">
+            <div class="def-label">Definition</div>
+            <p><strong>SURVIVAL</strong> — actions taken by firms to remain operational or in existence.</p>
+          </div>
+
+          <div style="background:white;border:1.5px solid rgba(26,39,68,0.12);border-radius:12px;padding:18px 24px;margin-bottom:16px;">
+            <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:12px;">Most relevant when:</div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Starting a new business</div>
+              <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Facing recession</div>
+              <div style="background:var(--light-teal);border-radius:8px;padding:10px 18px;font-size:clamp(0.9rem,1.45vw,1.05rem);color:#065f46;font-weight:600;">Fighting tough competition</div>
+            </div>
+          </div>
+
+          <div class="context-box">
+            <div class="ctx-label">Vietnamese Context</div>
+            <p>When COVID-19 hit Vietnam in 2020, many restaurants and shops focused on survival — keeping the doors open until customers returned. Revenue dropped but fixed costs (rent, staff) still had to be paid.</p>
+          </div>
+
+          <div class="insight-box" style="margin-top:14px;">
+            <div class="ins-label">Key Insight</div>
+            <p>In the long run, firms must be PROFITABLE to survive. Survival is a short-term, crisis-mode objective — not a permanent strategy.</p>
           </div>
         </div>
 
-        <div class="context-box">
-          <div class="ctx-label">Vietnamese Context</div>
-          <p>When COVID-19 hit Vietnam in 2020, many restaurants and shops focused on survival — keeping the doors open until customers returned. Revenue dropped but fixed costs (rent, staff) still had to be paid.</p>
+        <div class="slide-img-frame" style="width:220px;height:260px;margin-top:4px;">
+          <img src="https://images.unsplash.com/photo-1583077874340-79db6564672e?w=600&q=80" alt="Vietnamese street food vendor — small business resilience" loading="lazy">
         </div>
 
-        <div class="insight-box" style="margin-top:14px;">
-          <div class="ins-label">Key Insight</div>
-          <p>In the long run, firms must be PROFITABLE to survive. Survival is a short-term, crisis-mode objective — not a permanent strategy.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -1173,8 +1272,15 @@
     <div class="practice-list" style="max-width:1000px;">
 
       <div class="practice-item" onclick="revealPractice(this)" style="border-color:rgba(26,39,68,0.18);padding:26px 30px;">
-        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:10px;">Scenario</div>
-        <div class="pq-text" style="font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.55;">A new banh mi shop opens next to 5 established competitors on the same street in Ho Chi Minh City. What is the new shop's primary objective likely to be? Why?</div>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:10px;">Scenario</div>
+            <div class="pq-text" style="font-size:clamp(1.05rem,1.8vw,1.25rem);line-height:1.55;">A new banh mi shop opens next to 5 established competitors on the same street in Ho Chi Minh City. What is the new shop's primary objective likely to be? Why?</div>
+          </div>
+          <div class="slide-img-thumb" style="width:140px;height:100px;flex-shrink:0;">
+            <img src="https://images.unsplash.com/photo-1600891963935-ddbcc6e22aef?w=400&q=80" alt="Banh mi Vietnamese sandwich" loading="lazy">
+          </div>
+        </div>
         <div class="pq-hint" style="margin-top:8px;">&#9654; Click to reveal model answer</div>
         <div class="pq-answer" style="font-size:clamp(0.95rem,1.55vw,1.1rem);">
           <strong style="font-size:1.1em;color:var(--navy);">SURVIVAL.</strong><br><br>
@@ -1203,34 +1309,42 @@
   <div class="slide" id="slide-5" style="justify-content:flex-start;padding-top:36px;">
     <h2 class="slide-h2" style="text-align:center;margin-bottom:16px;">Objective 2 — Social Welfare</h2>
 
-    <div style="width:100%;max-width:1000px;">
-      <div class="def-box" style="margin-bottom:16px;">
-        <div class="def-label">Definition</div>
-        <p><strong>SOCIAL WELFARE</strong> — economic activity that benefits society beyond just the firm itself, prioritising the wellbeing of others.</p>
+    <div style="width:100%;max-width:1000px;display:flex;gap:24px;align-items:flex-start;">
+
+      <div style="flex:1;min-width:0;">
+        <div class="def-box" style="margin-bottom:16px;">
+          <div class="def-label">Definition</div>
+          <p><strong>SOCIAL WELFARE</strong> — economic activity that benefits society beyond just the firm itself, prioritising the wellbeing of others.</p>
+        </div>
+
+        <div class="cards-row">
+          <div class="card-item">
+            <div class="ci-num">1</div>
+            <div class="ci-title">Enhances brand image</div>
+            <p>Customers prefer to buy from firms they see as responsible and ethical.</p>
+          </div>
+          <div class="card-item">
+            <div class="ci-num">2</div>
+            <div class="ci-title">Attracts &amp; retains employees</div>
+            <p>Workers want to feel proud of where they work — CSR improves morale and reduces staff turnover.</p>
+          </div>
+          <div class="card-item">
+            <div class="ci-num">3</div>
+            <div class="ci-title">Appeals to ethical investors</div>
+            <p>ESG investors increasingly choose socially responsible firms for their portfolios.</p>
+          </div>
+        </div>
+
+        <div style="background:rgba(26,39,68,0.06);border:1.5px solid rgba(26,39,68,0.15);border-radius:12px;padding:16px 22px;margin-top:14px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="background:var(--navy);color:white;border-radius:8px;padding:6px 14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;">Public Sector</div>
+          <p style="font-size:clamp(0.92rem,1.5vw,1.05rem);color:var(--navy);line-height:1.55;">Public sector firms (run by government) often prioritise social welfare over profit — e.g. public hospitals, state schools. Their goal is to serve citizens, not shareholders.</p>
+        </div>
       </div>
 
-      <div class="cards-row">
-        <div class="card-item">
-          <div class="ci-num">1</div>
-          <div class="ci-title">Enhances brand image</div>
-          <p>Customers prefer to buy from firms they see as responsible and ethical.</p>
-        </div>
-        <div class="card-item">
-          <div class="ci-num">2</div>
-          <div class="ci-title">Attracts &amp; retains employees</div>
-          <p>Workers want to feel proud of where they work — CSR improves morale and reduces staff turnover.</p>
-        </div>
-        <div class="card-item">
-          <div class="ci-num">3</div>
-          <div class="ci-title">Appeals to ethical investors</div>
-          <p>ESG investors increasingly choose socially responsible firms for their portfolios.</p>
-        </div>
+      <div class="slide-img-frame" style="width:210px;height:240px;margin-top:4px;">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="People helping community — social welfare" loading="lazy">
       </div>
 
-      <div style="background:rgba(26,39,68,0.06);border:1.5px solid rgba(26,39,68,0.15);border-radius:12px;padding:16px 22px;margin-top:14px;display:flex;align-items:flex-start;gap:16px;">
-        <div style="background:var(--navy);color:white;border-radius:8px;padding:6px 14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;">Public Sector</div>
-        <p style="font-size:clamp(0.92rem,1.5vw,1.05rem);color:var(--navy);line-height:1.55;">Public sector firms (run by government) often prioritise social welfare over profit — e.g. public hospitals, state schools. Their goal is to serve citizens, not shareholders.</p>
-      </div>
     </div>
   </div>
 
@@ -1334,8 +1448,15 @@
     <div class="practice-list" style="max-width:1000px;">
 
       <div class="practice-item" onclick="revealPractice(this)" style="border-color:rgba(26,39,68,0.18);padding:24px 28px;">
-        <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:8px;">Scenario</div>
-        <div class="pq-text" style="font-size:clamp(1.05rem,1.8vw,1.25rem);">A pho restaurant earns $10,000 in revenue this month. Its total costs are $7,000. Calculate its profit.</div>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);margin-bottom:8px;">Scenario</div>
+            <div class="pq-text" style="font-size:clamp(1.05rem,1.8vw,1.25rem);">A pho restaurant earns $10,000 in revenue this month. Its total costs are $7,000. Calculate its profit.</div>
+          </div>
+          <div class="slide-img-thumb" style="width:130px;height:90px;flex-shrink:0;">
+            <img src="https://images.unsplash.com/photo-1583224994076-ae7d6f3eecf2?w=400&q=80" alt="Bowl of Vietnamese pho noodle soup" loading="lazy">
+          </div>
+        </div>
         <div class="pq-hint">&#9654; Click to reveal step-by-step working</div>
         <div class="pq-answer">
           <div style="margin-bottom:8px;"><strong>Step 1:</strong> Identify the formula &rarr; <strong>Profit = TR − TC</strong></div>
@@ -1476,22 +1597,22 @@
 
       <div class="obj-summary-grid">
         <div class="osq-card osq-navy">
-          <span class="osq-emoji">&#128737;&#65039;</span>
+          <svg class="osq-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <div class="osq-title">Survival</div>
           <div class="osq-sub">Stay in business — most relevant for new firms or during recessions and economic shocks.</div>
         </div>
         <div class="osq-card osq-teal">
-          <span class="osq-emoji">&#129309;</span>
+          <svg class="osq-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <div class="osq-title">Social Welfare</div>
           <div class="osq-sub">Help society — public sector firms and ethical brands that prioritise people over profit.</div>
         </div>
         <div class="osq-card osq-gold">
-          <span class="osq-emoji">&#128176;</span>
+          <svg class="osq-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           <div class="osq-title">Profit Maximisation</div>
           <div class="osq-sub">Maximise TR − TC — the primary goal of most commercial businesses and their shareholders.</div>
         </div>
         <div class="osq-card osq-lteal">
-          <span class="osq-emoji">&#128200;</span>
+          <svg class="osq-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           <div class="osq-title">Growth</div>
           <div class="osq-sub">Get bigger — established firms with strong cash flow looking to expand into new markets.</div>
         </div>
@@ -1510,6 +1631,7 @@
   <div class="slide" id="slide-12" style="justify-content:flex-start;padding-top:28px;">
     <div class="case-study-card">
       <div class="cs-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/VinFast_logo.svg/320px-VinFast_logo.svg.png" alt="VinFast logo" class="cs-logo" loading="lazy">
         <div>
           <div class="csh-name">VinFast</div>
           <div class="csh-sector">Electric Vehicle Manufacturing &bull; Hai Phong, Vietnam (subsidiary of Vingroup)</div>
@@ -1571,6 +1693,7 @@
   <div class="slide" id="slide-13" style="justify-content:flex-start;padding-top:28px;">
     <div class="case-study-card">
       <div class="cs-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Highlands_Coffee_logo.svg/320px-Highlands_Coffee_logo.svg.png" alt="Highlands Coffee logo" class="cs-logo" loading="lazy">
         <div>
           <div class="csh-name">Highlands Coffee</div>
           <div class="csh-sector">Coffee Shop Chain — Food &amp; Beverage &bull; Ho Chi Minh City, Vietnam</div>
@@ -1628,12 +1751,17 @@
   ══════════════════════════════════════════ -->
   <div class="slide" id="slide-14" style="justify-content:flex-start;padding-top:28px;">
     <div class="case-study-card">
-      <div class="cs-header">
-        <div>
-          <div class="csh-name">Sapa Mountain Tours</div>
-          <div class="csh-sector">Adventure Tourism — small family-run trekking business &bull; Sapa, northern Vietnam</div>
+      <div style="position:relative;overflow:hidden;border-radius:16px 16px 0 0;">
+        <div class="cs-banner">
+          <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80" alt="Sapa mountain landscape, northern Vietnam" loading="lazy">
         </div>
-        <div class="csh-badge">Objective: Survival</div>
+        <div class="cs-header" style="border-radius:0;position:absolute;bottom:0;left:0;right:0;background:rgba(26,39,68,0.82);backdrop-filter:blur(2px);">
+          <div>
+            <div class="csh-name">Sapa Mountain Tours</div>
+            <div class="csh-sector">Adventure Tourism — small family-run trekking business &bull; Sapa, northern Vietnam</div>
+          </div>
+          <div class="csh-badge">Objective: Survival</div>
+        </div>
       </div>
       <div class="cs-body">
         <div class="csb-label">Key Facts</div>
@@ -1688,6 +1816,7 @@
   <div class="slide" id="slide-15" style="justify-content:flex-start;padding-top:28px;">
     <div class="case-study-card">
       <div class="cs-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vinamilk_logo.png/320px-Vinamilk_logo.png" alt="Vinamilk logo" class="cs-logo" loading="lazy">
         <div>
           <div class="csh-name">Vinamilk</div>
           <div class="csh-sector">Dairy — Food &amp; Beverage &bull; Programme: "1 Billion Glasses of Milk for Vietnamese Children"</div>
